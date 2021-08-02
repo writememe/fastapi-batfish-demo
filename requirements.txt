@@ -1,0 +1,7 @@
+pybatfish
+pandas
+black
+pylama
+bandit
+openpyxl
+data-science-types
