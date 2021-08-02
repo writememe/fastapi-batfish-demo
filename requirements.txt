@@ -5,3 +5,4 @@ pylama
 bandit
 openpyxl
 data-science-types
+yamllint
