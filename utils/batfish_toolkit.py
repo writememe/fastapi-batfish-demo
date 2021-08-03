@@ -198,7 +198,7 @@ def main():
         NETWORK_NAME,
         SNAPSHOT_NAME,
         SNAPSHOT_PATH,
-        create_snapshot=False,
+        create_snapshot=True,
     )
     # Retrieve all interface properties into a Dataframe
     interface_df = get_all_interface_properties()
