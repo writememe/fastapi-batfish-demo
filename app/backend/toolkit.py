@@ -46,6 +46,7 @@ def convert_bf_csv_file_to_bf(
     csv_file_path: str, index_method: Union[str, int] = 0
 ) -> pd.DataFrame:
     """
+    TODO
     Read the Batfish CSV data file and convert it to a pandas dataframe for further usage.
 
     Args:
@@ -68,6 +69,16 @@ def convert_bf_csv_file_to_bf(
 def convert_df_to_json(
     df: pd.DataFrame, orient: str = "index", indent: int = 2
 ) -> Dict:
+    """
+    Args:
+        TODO
+
+    Returns:
+        TODO
+
+    Raises:
+        TODO
+    """
     raw_result = df.to_json(orient=orient, indent=indent)
     print(f"Type: {type(raw_result)}")
     dict_result = json.loads(raw_result)
@@ -78,6 +89,7 @@ def filter_interfaces_by_node(
     df: pd.DataFrame, node: str, exact_match: bool = True
 ) -> pd.DataFrame:
     """
+    TODO
     Args:
         df:
         node:
@@ -100,6 +112,7 @@ def filter_interfaces_by_active(
     df: pd.DataFrame, node: str = None, active: bool = True
 ) -> pd.DataFrame:
     """
+    TODO
     Args:
         df:
         node:
@@ -126,6 +139,16 @@ def get_all_interfaces_active(
     node: str = None,
     active: bool = True,
 ):
+    """
+    Args:
+        TODO
+
+    Returns:
+        TODO
+
+    Raises:
+        TODO
+    """
     bf_csv_file = get_bf_csv_file_name(
         date_stamp=date_stamp,
         file_prefix=file_prefix,
@@ -136,10 +159,7 @@ def get_all_interfaces_active(
     if os.path.exists(bf_csv_file_path):
         df = convert_bf_csv_file_to_bf(csv_file_path=bf_csv_file_path, index_method=0)
         interface_df = filter_interfaces_by_active(df=df, node=node, active=active)
-        print(interface_df)
-        print("*********")
         interface_dict = convert_df_to_json(df=interface_df, orient="index")
-        print(interface_dict)
         return interface_dict
     else:
         interface_dict = None
