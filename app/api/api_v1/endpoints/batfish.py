@@ -55,9 +55,11 @@ async def retrieve_all_interfaces_active(
 
     - **node:** The node name (if supplied) to filter Pandas dataframes on.
 
-    - **active:** A boolean to indicate whether active or inactive interfaces should be returned in the filter.
+    - **active:** A boolean to indicate whether active or inactive interfaces should be
+     returned in the filter.
 
-        _Example:_ `active=true` returns all active interfaces. `active=false` returns all inactive interfaces.
+        _Example:_ `active=true` returns all active interfaces. `active=false` returns all
+     inactive interfaces.
     """
     # Retrieve all applicable interfaces based on the parameters
     # supplied in the API endpoint

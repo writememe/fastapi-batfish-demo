@@ -8,3 +8,5 @@ data-science-types
 yamllint
 fastapi[all]
 uvicorn
+pytest
+pytest-cov

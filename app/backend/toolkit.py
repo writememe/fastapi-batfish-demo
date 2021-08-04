@@ -158,6 +158,7 @@ def filter_interfaces_by_active(
 
 # Functions which interface with the Frontend API functions.
 
+
 def get_all_interfaces_active(
     date_stamp: str = "2021-08-03",
     file_prefix: str = "dfjt",
@@ -177,10 +178,11 @@ def get_all_interfaces_active(
         file_suffix: The suffix of the file naming standard, after the date stamp.
         file_dir: The directory which contains the 'Batfish database' of CSV files.
         node: The node name (if supplied) to filter Pandas dataframes on.
-        active: A boolean to indicate whether active or inactive interfaces should be returned in the filter.
+        active: A boolean to indicate whether active or inactive interfaces should be
+        returned in the filter.
 
     Returns:
-        interface_dict: 
+        interface_dict:
             If successful, a dictionary containing the Pandas dataframe results.
             If unsuccessful, None is returned for further processing.
 
