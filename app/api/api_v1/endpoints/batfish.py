@@ -42,6 +42,23 @@ async def retrieve_all_interfaces_active(
     node: str = None,
     active: bool = True,
 ):
+    """
+    Locate and load data in a datestamped Batfish CSV file, filter based on a **node** (if supplied)
+    and the **active** boolean flag and return structured data back to the API endpoint.
+
+    - **date_stamp:** A formatted date stamp indicating the day of the file to be retrieved.
+
+        _Example:_ `2021-08-03` would equate to August 3rd 2021.
+    - **file_prefix:** The prefix of the file naming standard, prior to the date stamp.
+
+    - **file_suffix:** The suffix of the file naming standard, after the date stamp.
+
+    - **node:** The node name (if supplied) to filter Pandas dataframes on.
+
+    - **active:** A boolean to indicate whether active or inactive interfaces should be returned in the filter.
+
+        _Example:_ `active=true` returns all active interfaces. `active=false` returns all inactive interfaces.
+    """
     # Retrieve all applicable interfaces based on the parameters
     # supplied in the API endpoint
     interface_dict = get_all_interfaces_active(
