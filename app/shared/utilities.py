@@ -63,3 +63,13 @@ EXAMPLE_INTERFACE_DF = {
         }
     }
 }
+
+DEFAULT_422_RESPONSE = {
+    "detail": [
+        {
+            "loc": ["query", "active"],
+            "msg": "value could not be parsed to a boolean",
+            "type": "type_error.bool",
+        }
+    ]
+}

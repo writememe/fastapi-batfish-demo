@@ -17,7 +17,10 @@ sys.path.append(os.path.join(dirname, ".."))
 from app.main import app  # noqa
 
 # Import variables for testing
-from app.shared.utilities import DEFAULT_404_RESPONSE, API_ENDPOINT_404_RESPONSE  # noqa
+from app.shared.utilities import (
+    DEFAULT_422_RESPONSE,
+    API_ENDPOINT_404_RESPONSE,
+)  # noqa
 
 # Initialise test client
 client = TestClient(app)
@@ -43,13 +46,21 @@ def test_retrieve_all_interfaces_active_good():
     """
     TODO
     """
-    # resp = client.get(
-    #     f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}&file_prefix={GOOD_FILE_PREFIX}&file_suffix={GOOD_FILE_SUFFIX}&active=true&node={GOOD_NODE}"
-    # )
-    resp = client.get(f"{API_PREFIX}/interfaces/")
-    print(resp.url)
-    assert resp.status_code == 404
-    # assert resp.status_code == 200
+    resp = client.get(
+        f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}&file_prefix={GOOD_FILE_PREFIX}"
+        f"&file_suffix={GOOD_FILE_SUFFIX}&active=true&node={GOOD_NODE}"
+    )
+    assert resp.status_code == 200
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert len(resp.json()["df_data"]) > 0
+
+
+def test_retrieve_all_interfaces_active_good_timestamp():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}")
+    assert resp.status_code == 200
     assert resp.headers["content-type"] == JSON_MIME_TYPE
     assert len(resp.json()["df_data"]) > 0
 
@@ -58,25 +69,97 @@ def test_retrieve_all_interfaces_active_bad_timestamp():
     """
     TODO
     """
-    # resp = client.get(
-    #     f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}&file_prefix={GOOD_FILE_PREFIX}&file_suffix={GOOD_FILE_SUFFIX}&active=true&node={GOOD_NODE}"
-    # )
     resp = client.get(f"{API_PREFIX}/interfaces/?date_stamp={BAD_DATESTAMP}")
-    print(resp.url)
     assert resp.status_code == 404
     assert resp.headers["content-type"] == JSON_MIME_TYPE
     assert resp.json() == ENDPOINT_404_DICT
 
 
-def test_retrieve_all_interfaces_active_good_timestamp():
+def test_retrieve_all_interfaces_active_good_file_prefix():
     """
     TODO
     """
-    # resp = client.get(
-    #     f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}&file_prefix={GOOD_FILE_PREFIX}&file_suffix={GOOD_FILE_SUFFIX}&active=true&node={GOOD_NODE}"
-    # )
-    resp = client.get(f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}")
-    print(resp.url)
+    resp = client.get(f"{API_PREFIX}/interfaces/?file_prefix={GOOD_FILE_PREFIX}")
+    assert resp.status_code == 200
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert len(resp.json()["df_data"]) > 0
+
+
+def test_retrieve_all_interfaces_active_bad_file_prefix():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?file_prefix={BAD_FILE_PREFIX}")
     assert resp.status_code == 404
     assert resp.headers["content-type"] == JSON_MIME_TYPE
     assert resp.json() == ENDPOINT_404_DICT
+
+
+def test_retrieve_all_interfaces_active_good_file_suffix():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?file_suffix={GOOD_FILE_SUFFIX}")
+    assert resp.status_code == 200
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert len(resp.json()["df_data"]) > 0
+
+
+def test_retrieve_all_interfaces_active_bad_file_suffix():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?file_suffix={BAD_FILE_SUFFIX}")
+    assert resp.status_code == 404
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert resp.json() == ENDPOINT_404_DICT
+
+
+def test_retrieve_all_interfaces_active_good_node():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?node={GOOD_NODE}")
+    assert resp.status_code == 200
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert len(resp.json()["df_data"]) > 0
+
+
+def test_retrieve_all_interfaces_active_bad_node():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?file_suffix={BAD_NODE}")
+    assert resp.status_code == 404
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert resp.json() == ENDPOINT_404_DICT
+
+
+def test_retrieve_all_interfaces_active_good_active_true():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?active=true")
+    assert resp.status_code == 200
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert len(resp.json()["df_data"]) > 0
+
+
+def test_retrieve_all_interfaces_active_good_active_false():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?active=false")
+    assert resp.status_code == 200
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert len(resp.json()["df_data"]) > 0
+
+
+def test_retrieve_all_interfaces_active_good_active_bad():
+    """
+    TODO
+    """
+    resp = client.get(f"{API_PREFIX}/interfaces/?active=bad")
+    assert resp.status_code == 422
+    assert resp.headers["content-type"] == JSON_MIME_TYPE
+    assert resp.json() == DEFAULT_422_RESPONSE

@@ -43,3 +43,7 @@ jobs:
               run: make yamllint
             - name: Execute bandit check
               run: make bandit
+            - name: Execute pytest check
+              env:
+                  BATFISH_DB: ${{ github.workspace }}/tests/test_db  # Point to test database directory
+              run: make pytest
