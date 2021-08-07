@@ -1,0 +1,7 @@
+---
+# Codecov.io configuration file for
+# https://codecov.io/gh/writememe/fastapi-batfish-demo
+ignore:
+  - venv/
+  - app/shared/utilities.py  # Utilities variable file
+  - utils/batfish_toolkit.py  # Batfish utility file

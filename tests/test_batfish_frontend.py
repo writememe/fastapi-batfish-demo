@@ -25,7 +25,7 @@ from app.shared.utilities import (
 # Initialise test client
 client = TestClient(app)
 
-# Global testing variables
+# Global testing variables to avoid repetition
 GOOD_DATESTAMP = "2021-08-03"
 GOOD_FILE_PREFIX = "dfjt"
 GOOD_FILE_SUFFIX = "interfaceProperties"
@@ -44,7 +44,7 @@ ENDPOINT_404_DICT = {"detail": API_ENDPOINT_404_RESPONSE}
 
 def test_retrieve_all_interfaces_active_good():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with all good arguments.
     """
     resp = client.get(
         f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}&file_prefix={GOOD_FILE_PREFIX}"
@@ -57,7 +57,7 @@ def test_retrieve_all_interfaces_active_good():
 
 def test_retrieve_all_interfaces_active_good_timestamp():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a good datestamp.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?date_stamp={GOOD_DATESTAMP}")
     assert resp.status_code == 200
@@ -67,7 +67,7 @@ def test_retrieve_all_interfaces_active_good_timestamp():
 
 def test_retrieve_all_interfaces_active_bad_timestamp():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a bad datestamp.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?date_stamp={BAD_DATESTAMP}")
     assert resp.status_code == 404
@@ -77,7 +77,7 @@ def test_retrieve_all_interfaces_active_bad_timestamp():
 
 def test_retrieve_all_interfaces_active_good_file_prefix():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a good file prefix.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?file_prefix={GOOD_FILE_PREFIX}")
     assert resp.status_code == 200
@@ -87,7 +87,7 @@ def test_retrieve_all_interfaces_active_good_file_prefix():
 
 def test_retrieve_all_interfaces_active_bad_file_prefix():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a bad file prefix.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?file_prefix={BAD_FILE_PREFIX}")
     assert resp.status_code == 404
@@ -97,7 +97,7 @@ def test_retrieve_all_interfaces_active_bad_file_prefix():
 
 def test_retrieve_all_interfaces_active_good_file_suffix():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a good file suffix.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?file_suffix={GOOD_FILE_SUFFIX}")
     assert resp.status_code == 200
@@ -107,7 +107,7 @@ def test_retrieve_all_interfaces_active_good_file_suffix():
 
 def test_retrieve_all_interfaces_active_bad_file_suffix():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a bad file suffix.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?file_suffix={BAD_FILE_SUFFIX}")
     assert resp.status_code == 404
@@ -117,7 +117,7 @@ def test_retrieve_all_interfaces_active_bad_file_suffix():
 
 def test_retrieve_all_interfaces_active_good_node():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a good node.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?node={GOOD_NODE}")
     assert resp.status_code == 200
@@ -127,7 +127,7 @@ def test_retrieve_all_interfaces_active_good_node():
 
 def test_retrieve_all_interfaces_active_bad_node():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with a bad node.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?file_suffix={BAD_NODE}")
     assert resp.status_code == 404
@@ -137,7 +137,7 @@ def test_retrieve_all_interfaces_active_bad_node():
 
 def test_retrieve_all_interfaces_active_good_active_true():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with the active boolean set to true.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?active=true")
     assert resp.status_code == 200
@@ -147,7 +147,7 @@ def test_retrieve_all_interfaces_active_good_active_true():
 
 def test_retrieve_all_interfaces_active_good_active_false():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with the active boolean set to false.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?active=false")
     assert resp.status_code == 200
@@ -157,9 +157,18 @@ def test_retrieve_all_interfaces_active_good_active_false():
 
 def test_retrieve_all_interfaces_active_good_active_bad():
     """
-    TODO
+    Test the `/api/v1/bf/interfaces/` endpoint with the active boolean set to a
+    non-boolean value.
     """
     resp = client.get(f"{API_PREFIX}/interfaces/?active=bad")
     assert resp.status_code == 422
     assert resp.headers["content-type"] == JSON_MIME_TYPE
     assert resp.json() == DEFAULT_422_RESPONSE
+
+
+def main():
+    test_retrieve_all_interfaces_active_good()
+
+
+if __name__ == "__main__":
+    main()

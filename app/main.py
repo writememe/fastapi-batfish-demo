@@ -5,8 +5,9 @@ FastAPI main application module
 from fastapi import FastAPI
 import os
 
-# Local FastAPI router module imports
+# Local FastAPI module imports
 from app.api.api_v1.api import router as api_router
+from app.shared.utilities import API_ROOT_MESSAGE
 
 # Get path of the current dir under which the file is executed.
 dirname = os.path.dirname(__file__)
@@ -34,4 +35,4 @@ app.include_router(api_router, prefix="/api/v1")
 # An indicative root endpoint
 @app.get("/")
 async def root_api_server():
-    return {"message": f"Welcome to the {api_title}. Version: {api_version}"}
+    return {"message": API_ROOT_MESSAGE}

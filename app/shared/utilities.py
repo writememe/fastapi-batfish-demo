@@ -1,6 +1,9 @@
 """
 This module contains shared utilies over multiple
 parts of the codebase, to prevention repetition
+
+NOTE: All these constants are in capitals to provide
+a visual prompt when interpreting in other modules/scripts
 """
 # Import modules
 import os
@@ -63,7 +66,7 @@ EXAMPLE_INTERFACE_DF = {
         }
     }
 }
-
+# Define the response when an invalid boolean value is provided
 DEFAULT_422_RESPONSE = {
     "detail": [
         {
@@ -73,3 +76,6 @@ DEFAULT_422_RESPONSE = {
         }
     ]
 }
+API_TITLE = "FastAPI x Batfish Demo API"
+API_SEMANTIC_VER = "1.0.0"
+API_ROOT_MESSAGE = f"Welcome to the {API_TITLE}. Version: {API_SEMANTIC_VER}"
