@@ -40,9 +40,7 @@ def get_bf_csv_file_name(
     Raises:
         N/A
     """
-    # Formatted the file name, for example dfjt-2021-08-03-interfaceProperties.csv
-    bf_csv_file_name = f"{file_prefix}-{date_stamp}-{file_suffix}.csv"
-    return bf_csv_file_name
+    return f"{file_prefix}-{date_stamp}-{file_suffix}.csv"
 
 
 def convert_bf_csv_file_to_df(
@@ -63,12 +61,10 @@ def convert_bf_csv_file_to_df(
     Raises:
         N/A
     """
-    # Read CSV and convert into a Pandas dataframe
-    df = pd.read_csv(
+    return pd.read_csv(
         csv_file_path,
         index_col=index_method,
     )
-    return df
 
 
 def convert_df_to_json(
@@ -93,9 +89,7 @@ def convert_df_to_json(
     """
     # Convert Pandas dataframe to JSON
     raw_result = df.to_json(orient=orient, indent=indent)
-    # Convert to dictionary, for further usage
-    dict_result = json.loads(raw_result)
-    return dict_result
+    return json.loads(raw_result)
 
 
 def filter_interfaces_by_active(
@@ -176,12 +170,8 @@ def get_all_interfaces_active(
         # Perform the appropriate filtering on the dataframe.
         interface_df = filter_interfaces_by_active(df=df, node=node, active=active)
         # Convert dataframe to dictionary
-        interface_dict = convert_df_to_json(df=interface_df, orient="index")
-        # Return dictionary.
-        return interface_dict
-    # Else, if the file isn't present
+        return convert_df_to_json(df=interface_df, orient="index")
     else:
         # Return None for interface dict, so that value can be processed outside
         # this function
-        interface_dict = None
-        return interface_dict
+        return None
