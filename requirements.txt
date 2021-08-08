@@ -1,0 +1,12 @@
+pybatfish
+pandas
+black
+pylama
+bandit
+openpyxl
+data-science-types
+yamllint
+fastapi[all]
+uvicorn
+pytest
+pytest-cov

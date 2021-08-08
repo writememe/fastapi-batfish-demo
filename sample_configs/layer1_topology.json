@@ -1,0 +1,44 @@
+{
+    "edges": [
+        {
+            "node1": {
+                "hostname": "lab-junos-01",
+                "interfaceName": "ge-0/0/0"
+            },
+            "node2": {
+                "hostname": "lab-csr-01",
+                "interfaceName": "GigabitEthernet3"
+            }
+        },
+        {
+            "node1": {
+                "hostname": "lab-csr-01",
+                "interfaceName": "GigabitEthernet1"
+            },
+            "node2": {
+                "hostname": "lab-arista-01",
+                "interfaceName": "Ethernet1"
+            }
+        },
+        {
+            "node1": {
+                "hostname": "lab-arista-01",
+                "interfaceName": "Ethernet3"
+            },
+            "node2": {
+                "hostname": "lab-nxos-01",
+                "interfaceName": "Ethernet1/3"
+            }
+        },
+        {
+            "node1": {
+                "hostname": "lab-nxos-01",
+                "interfaceName": "Ethernet1/2"
+            },
+            "node2": {
+                "hostname": "lab-arista-02",
+                "interfaceName": "Ethernet2"
+            }
+        }
+    ]
+}
