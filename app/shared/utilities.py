@@ -24,6 +24,10 @@ except KeyError as key_err:
         "Setting to default value."
     )
     BATFISH_DATABASE = os.path.join(dirname, "..", "db")
+# Centrally manage API semantic versioning, root response and root message
+API_TITLE = "FastAPI x Batfish Demo API"
+API_SEMANTIC_VER = "1.0.0"
+API_ROOT_MESSAGE = f"Welcome to the {API_TITLE}. Version: {API_SEMANTIC_VER}"
 # Define an example dataframe response for usage in API endpoint documentation
 EXAMPLE_INTERFACE_DF = {
     "df_data": {
@@ -76,6 +80,3 @@ DEFAULT_422_RESPONSE = {
         }
     ]
 }
-API_TITLE = "FastAPI x Batfish Demo API"
-API_SEMANTIC_VER = "1.0.0"
-API_ROOT_MESSAGE = f"Welcome to the {API_TITLE}. Version: {API_SEMANTIC_VER}"
