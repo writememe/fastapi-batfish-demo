@@ -1,3 +1,4 @@
+[![fastapi-batfish-demo](https://github.com/writememe/fastapi-batfish-demo/actions/workflows/main.yaml/badge.svg)](https://github.com/writememe/fastapi-batfish-demo/actions/workflows/main.yaml)
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
@@ -17,8 +18,7 @@ This application is only supported on:
 
  ## Installation/Operating Instructions
 
-There are two methods for installing or operating net-api; using a Python virtual environment or a Docker container. The instructions
-for each method are described below.
+Below is the method to run the `fastapi-batfish-demo` using Python 3.x.
 
 ### Python 3.X
 
@@ -68,4 +68,6 @@ http://<your_server_ip>:<your_port>/docs
 For example:  
 
 http://127.0.0.1:8004/docs
+
+
 
