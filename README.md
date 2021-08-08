@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/writememe/fastapi-batfish-demo/branch/main/graph/badge.svg?token=2Y7UXBACSV)](https://codecov.io/gh/writememe/fastapi-batfish-demo)
 [![fastapi-batfish-demo](https://github.com/writememe/fastapi-batfish-demo/actions/workflows/main.yaml/badge.svg)](https://github.com/writememe/fastapi-batfish-demo/actions/workflows/main.yaml)
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-380/)
