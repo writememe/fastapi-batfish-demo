@@ -7,7 +7,7 @@
 # FastAPI x Batfish Demo
 
 This repository contains a FastAPI implementation to present Batfish
-pandas dataframe data to a end user.
+pandas dataframe data to an end user.
 
 ## Supported Environments
 
