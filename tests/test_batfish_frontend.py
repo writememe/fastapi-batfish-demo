@@ -164,11 +164,3 @@ def test_retrieve_all_interfaces_active_good_active_bad():
     assert resp.status_code == 422
     assert resp.headers["content-type"] == JSON_MIME_TYPE
     assert resp.json() == DEFAULT_422_RESPONSE
-
-
-def main():
-    test_retrieve_all_interfaces_active_good()
-
-
-if __name__ == "__main__":
-    main()

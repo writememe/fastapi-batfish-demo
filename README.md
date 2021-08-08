@@ -38,30 +38,31 @@ cd fastapi-batfish-dem
 virtualenv --python=`which python3` venv
 source venv/bin/activate
 ```
-4) Install the requirements for `fastapi-batfish-demo`
+
+3) Install the requirements for `fastapi-batfish-demo`
 ```
 pip install -r requirements.txt
 ```
 
-5) (Optional)Set environmental variable, which is used by the application as location of the Batfish "database" files:
+4) (Optional) Set environmental variable, which is used by the application as location of the Batfish "database" files:
 
 ```bash
 export BATFISH_DB="<github_repo_directory>/db/"
 ```
-6) Validate these environmental variables by entering the following command:
+5) (Optional) Validate these environmental variables by entering the following command:
 
 ```
 env | grep BATFISH_DB
 ```
-You should see the two environment variables set.
+You should see the environmental variables set.
 
-7) Start the FastAPI application, whereby the `--port` argument is the TCP port you want to listen on:
+6) Start the FastAPI application, whereby the `--port` argument is the TCP port you want to listen on:
 
 ```python3
 uvicorn app.main:app --port 8004 --reload
 ```
 
-8) Open up your web-browser and navigate to the following URL, substituting the server address for whatever
+7) Open up your web-browser and navigate to the following URL, substituting the server address for whatever
 is specific to your environment:
 
 http://<your_server_ip>:<your_port>/docs

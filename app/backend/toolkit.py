@@ -98,34 +98,6 @@ def convert_df_to_json(
     return dict_result
 
 
-def filter_interfaces_by_node(
-    df: pd.DataFrame, node: str, exact_match: bool = True
-) -> pd.DataFrame:
-    """
-    Filter all interface properties by a particular node, and
-    perform an exact or inexact match based on the `exact_match` boolean
-    flag.
-
-    Args:
-        df: A pandas dataframe for filtering.
-        node: The name of the node on which the dataframe should be filtered.
-        exact_match: Boolean to perform an exact or inexact match of the node.
-
-    Returns:
-        df: A pandas dataframe for further processing.
-
-    Raises:
-        N/A
-    """
-    # If exact match, perform an exact match filter
-    if exact_match:
-        df = df[df["Interface"] == node]
-    # Else, perform a contains match filter
-    else:
-        df = df[df["Interface"].str.contains(node)]
-    return df
-
-
 def filter_interfaces_by_active(
     df: pd.DataFrame, node: Optional[str] = None, active: bool = True
 ) -> pd.DataFrame:
@@ -213,7 +185,3 @@ def get_all_interfaces_active(
         # this function
         interface_dict = None
         return interface_dict
-
-
-if __name__ == "__main__":
-    get_all_interfaces_active()
