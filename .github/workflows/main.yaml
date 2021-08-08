@@ -63,6 +63,8 @@ jobs:
               with:
                   python-version: 3.8
             - name: Generate coverage report
+              env:
+                  BATFISH_DB: ${{ github.workspace }}/tests/test_db  # Point to test database directory
               run: |
                   pip install -r requirements.txt
                   pytest --cov=./ --cov-report=xml
